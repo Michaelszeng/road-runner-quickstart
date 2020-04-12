@@ -81,7 +81,7 @@ public class SampleMecanumDrive extends MecanumDrive {
     private double turnStart;
 
     private DriveConstraints constraints;
-    private TrajectoryFollower follower;
+    public TrajectoryFollower follower;
 
     private List<Pose2d> poseHistory;
 

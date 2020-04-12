@@ -2,12 +2,23 @@ package org.firstinspires.ftc.teamcode.drive;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.control.PIDCoefficients;
+import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.constraints.DriveConstraints;
 import com.qualcomm.hardware.motors.GoBILDA5202Series;
 import com.qualcomm.hardware.motors.NeveRest20Gearmotor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 import org.firstinspires.ftc.teamcode.util.RobotLogger;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.io.File;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 /*
  * Constants shared between multiple drive types.
@@ -23,6 +34,12 @@ import org.firstinspires.ftc.teamcode.util.RobotLogger;
 @Config
 public class DriveConstants {
     private static String TAG = "DriveConstants";
+    public static int TEST_SKY_STONE_POSITION = 1;
+    public static boolean USE_VUFORIA_LOCALIZER = false;
+    public static boolean ENABLE_ARM_ACTIONS = false;
+    public static boolean USING_STRAFE_DIAGONAL = true;
+    public static int TEST_PAUSE_TIME = 1000;
+
     public static double odoEncoderTicksPerRev = 1565.0;
     public static double txP = 5.0; //translational x/y co-efficients
     public static double txI = 0.5;
@@ -139,6 +156,56 @@ public class DriveConstants {
         // see https://docs.google.com/document/d/1tyWrXDfMidwYyP_5H4mZyVgaEswhOC35gvdmP-V-5hA/edit#heading=h.61g9ixenznbx
         RobotLogger.dd(TAG, "getTicksPerSec "+Double.toString(getTicksPerSec()));
         return 32767 / getTicksPerSec();
+    }
+    public static Pose2d[] parsePathXY(String filename) {
+        String full_path = AppUtil.CONFIG_FILES_DIR + "/" + filename;
+        RobotLogger.dd(TAG, "path definition file: " + full_path);
+        Pose2d[] coordinates = null;
+
+        try {
+            File inputFile = new File(AppUtil.CONFIG_FILES_DIR+"/"+filename);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(inputFile);
+            doc.getDocumentElement().normalize();
+            RobotLogger.dd(TAG, "Root element :" + doc.getDocumentElement().getNodeName());
+            NodeList nList = doc.getElementsByTagName("movestep");
+            RobotLogger.dd(TAG,"----------------------------");
+            int step_num = nList.getLength();
+            RobotLogger.dd(TAG, "elements :" + Integer.toString(step_num));
+
+            coordinates = new Pose2d[step_num];
+
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+                Node nNode = nList.item(temp);
+                //RobotLogger.dd(TAG, "Current Element :" + nNode.getNodeName());
+
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    double x, y, h;
+                    Element eElement = (Element) nNode;
+                    RobotLogger.dd(TAG, "step info : "
+                            + eElement.getAttribute("drive_type"));
+                    x = new Double(eElement
+                            .getElementsByTagName("x")
+                            .item(0)
+                            .getTextContent());
+                    y = new Double(eElement
+                            .getElementsByTagName("y")
+                            .item(0)
+                            .getTextContent());
+                    h = new Double(eElement
+                            .getElementsByTagName("h")
+                            .item(0)
+                            .getTextContent());
+                    RobotLogger.dd(TAG,"step %d: x: %f, y: %f, h: %f", temp, x, y , h);
+                    coordinates[temp] = new Pose2d(x, y, Math.toRadians(h));
+                }
+            }
+        } catch (Exception e) {
+            RobotLogger.dd(TAG, "cannot find path XY file: " + full_path);
+            e.printStackTrace();
+        }
+        return coordinates;
     }
 
     public static boolean ENABLE_LOGGING = true;
