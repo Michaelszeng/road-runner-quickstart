@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.util.RobotLogger;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.util.SafeSleep;
 import org.firstinspires.ftc.teamcode.vision.VuforiaCamLocalizer;
 import org.firstinspires.ftc.teamcode.vision.VuforiaCameraChoice;
 
@@ -76,7 +77,7 @@ public class VuforiaTest extends LinearOpMode {
                     RobotLogger.dd(TAG, "vuforia localization: " + poseEstimate.toString());
                 }
                 if (opModeIsActive()) {
-                    //Path.sleep_millisec_opmode(200, this);
+                    SafeSleep.sleep_milliseconds(this,5000);
                 }
             }
             vLocalizer.stop();

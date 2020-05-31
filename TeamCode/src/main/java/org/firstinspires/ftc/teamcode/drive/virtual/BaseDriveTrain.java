@@ -60,6 +60,7 @@ public abstract class BaseDriveTrain {
         {
             RobotLogger.dd(TAG, "need to reset motors");
             drive_motors.clear();
+            driveTrainReady = false;
         }
         drive_motors.add(motor);
         if (getWheelCount() == DRIVE_WHEEL_NUM)

@@ -9,12 +9,6 @@ import org.firstinspires.ftc.teamcode.util.RobotLogger;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants.GEAR_RATIO;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_RPM;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants.WHEEL_RADIUS;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants.getMaxRpm;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants.kV;
-
 // motor to wheel
 public class DriveTrain extends BaseDriveTrain {
     private String TAG = "DriveTrain";
