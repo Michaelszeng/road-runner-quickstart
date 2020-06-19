@@ -341,11 +341,11 @@ public class AutoPath {
         step_count++;
 
         // step 7
-        if (DriveConstants.ENABLE_ARM_ACTIONS) {
-
-            hwMap.foundationLock.setPosition(TeleopConstants.foundationLockLock);
-            hwMap.transferLock.setPosition(TeleopConstants.transferLockPosUp);
-        }
+//        if (DriveConstants.ENABLE_ARM_ACTIONS) {
+//
+//            hwMap.foundationLock.setPosition(TeleopConstants.foundationLockLock);
+//            hwMap.transferLock.setPosition(TeleopConstants.transferLockPosUp);
+//        }
         SafeSleep.sleep_milliseconds(opMode, 400);
         DriveBuilderReset(true, false, "step" + Integer.toString(step_count) + coordinates[step_count].toString() +
                 ", after drop fundation,, to spline ");
@@ -365,10 +365,10 @@ public class AutoPath {
 
         // step 8
 
-        if(DriveConstants.ENABLE_ARM_ACTIONS){
-            hwMap.foundationLock.setPosition(TeleopConstants.foundationLockUnlock);
-            hwMap.transferLock.setPosition(TeleopConstants.transferLockPosOut);
-        }
+//        if(DriveConstants.ENABLE_ARM_ACTIONS){
+//            hwMap.foundationLock.setPosition(TeleopConstants.foundationLockUnlock);
+//            hwMap.transferLock.setPosition(TeleopConstants.transferLockPosOut);
+//        }
 
         //SafeSleep.sleep_milliseconds(300, opMode);
 
@@ -421,7 +421,7 @@ public class AutoPath {
         hwMap.backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         hwMap.backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        hwMap.parkingServo.setPosition(TeleopConstants.parkingServoPosLock);
+//        hwMap.parkingServo.setPosition(TeleopConstants.parkingServoPosLock);
         transferReset(hwMap, opMode);
         initIntakeClaw(hwMap, opMode);
         SafeSleep.sleep_milliseconds(opMode, 5000);
@@ -472,7 +472,7 @@ public class AutoPath {
         hwMap.backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         hwMap.backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        hwMap.parkingServo.setPosition(TeleopConstants.parkingServoPosLock);
+//        hwMap.parkingServo.setPosition(TeleopConstants.parkingServoPosLock);
         transferReset(hwMap, opMode);
         initIntakeClaw(hwMap, opMode);
         SafeSleep.sleep_milliseconds(opMode, 5000);
@@ -560,10 +560,10 @@ public class AutoPath {
         LinearOpMode opmode = mode;
         Thread thread = new Thread() {
             public void run() {
-                hw.transferHorn.setPosition(TeleopConstants.transferHornPosPush);
-                SafeSleep.sleep_milliseconds(opmode, 200);
-                hw.liftOdometry.setPosition(TeleopConstants.liftOdometryDown);
-                SafeSleep.sleep_milliseconds(opmode, 200);
+//                hw.transferHorn.setPosition(TeleopConstants.transferHornPosPush);
+//                SafeSleep.sleep_milliseconds(opmode, 200);
+//                hw.liftOdometry.setPosition(TeleopConstants.liftOdometryDown);
+//                SafeSleep.sleep_milliseconds(opmode, 200);
                 //hwMap.innerTransfer.setPosition(TeleopConstants.innerTransferPosBlock);
             }
         };
@@ -575,26 +575,26 @@ public class AutoPath {
         Thread t = new Thread() {
             public void run() {
                 //hwMap.clawServo2.setPosition(0.9336);
-                hw.clawServo1.setPosition(TeleopConstants.clawServo1PosClose);
-
-                SafeSleep.sleep_milliseconds(opmode, 600);
-
-                hw.clawServo2.setPosition(TeleopConstants.clawServo2PosClose);
-
-                SafeSleep.sleep_milliseconds(opmode, 600);
-
-                //hwMap.clawInit.setPosition(TeleopConstants.clawInitPosReset);
-                hw.clawInit.setPosition(TeleopConstants.clawInitPosReset);
-
-                SafeSleep.sleep_milliseconds(opmode, 1000);
-
-                hw.clawInit.setPosition(TeleopConstants.clawInitPosCapstone);
-
-                SafeSleep.sleep_milliseconds(opmode, 600);
-
-                hw.clawServo2.setPosition(TeleopConstants.clawServo2PosClose);
-
-                SafeSleep.sleep_milliseconds(opmode, 200);
+//                hw.clawServo1.setPosition(TeleopConstants.clawServo1PosClose);
+//
+//                SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                hw.clawServo2.setPosition(TeleopConstants.clawServo2PosClose);
+//
+//                SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                //hwMap.clawInit.setPosition(TeleopConstants.clawInitPosReset);
+//                hw.clawInit.setPosition(TeleopConstants.clawInitPosReset);
+//
+//                SafeSleep.sleep_milliseconds(opmode, 1000);
+//
+//                hw.clawInit.setPosition(TeleopConstants.clawInitPosCapstone);
+//
+//                SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                hw.clawServo2.setPosition(TeleopConstants.clawServo2PosClose);
+//
+//                SafeSleep.sleep_milliseconds(opmode, 200);
             }
         };
         t.start();
@@ -606,58 +606,58 @@ public class AutoPath {
             public void run() {
                 if (FieldPosition.RED_QUARY == fieldPosition) {
                     if (first) {
-                        hw.redAutoClawJoint2.setPosition(0.85); //TODO Servo Test
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Extended);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Prep);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
+//                        hw.redAutoClawJoint2.setPosition(0.85); //TODO Servo Test
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Extended);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Prep);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
                     } else {
-                        SafeSleep.sleep_milliseconds(opmode, 1900);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Prep);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Extended);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        grabStone(hw, fieldPosition, opmode);
+//                        SafeSleep.sleep_milliseconds(opmode, 1900);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Prep);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Extended);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        grabStone(hw, fieldPosition, opmode);
                     }
                 } else {
-                    if (first) {
-                        hw.redAutoClawJoint2.setPosition(0.04);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Extended_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Prep_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-                    } else {
-                        SafeSleep.sleep_milliseconds(opmode, 1900);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Prep_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Extended_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        grabStone(hw, fieldPosition, opmode);
-                    }
+//                    if (first) {
+//                        hw.redAutoClawJoint2.setPosition(0.04);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Extended_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Prep_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//                    } else {
+//                        SafeSleep.sleep_milliseconds(opmode, 1900);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Prep_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Extended_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        grabStone(hw, fieldPosition, opmode);
+//                    }
                 }
             }
         };
@@ -668,33 +668,33 @@ public class AutoPath {
     public static void grabStone(AllHardwareMap hw, FieldPosition fieldPosition, com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
         mode) {
         LinearOpMode opmode = mode;
-        if (FieldPosition.RED_QUARY == fieldPosition) {
-            hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing);
-            SafeSleep.sleep_milliseconds(opmode, 400);
-
-            hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Closed);
-            SafeSleep.sleep_milliseconds(opmode, 200);
-
-            hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2PickUp);
-            SafeSleep.sleep_milliseconds(opmode, 200);
-
-            hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Stone);
-            SafeSleep.sleep_milliseconds(opmode, 200);
-
-        } else {
-            hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing_blue);
-            SafeSleep.sleep_milliseconds(opmode, 400);
-
-            hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Closed_blue);
-            SafeSleep.sleep_milliseconds(opmode, 200);
-
-            hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2PickUp_blue);
-            SafeSleep.sleep_milliseconds(opmode, 200);
-
-            hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Stone_blue);
-            SafeSleep.sleep_milliseconds(opmode, 200);
-
-        }
+//        if (FieldPosition.RED_QUARY == fieldPosition) {
+//            hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing);
+//            SafeSleep.sleep_milliseconds(opmode, 400);
+//
+//            hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Closed);
+//            SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//            hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2PickUp);
+//            SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//            hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Stone);
+//            SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//        } else {
+//            hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing_blue);
+//            SafeSleep.sleep_milliseconds(opmode, 400);
+//
+//            hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Closed_blue);
+//            SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//            hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2PickUp_blue);
+//            SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//            hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Stone_blue);
+//            SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//        }
     }
 
     public static void dropStone(AllHardwareMap hw, FieldPosition fieldPosition, boolean first, LinearOpMode mode) {
@@ -702,141 +702,141 @@ public class AutoPath {
         Thread t = new Thread() {
             public void run() {
                 SafeSleep.sleep_milliseconds(opmode, 2200);
-                if (FieldPosition.RED_QUARY == fieldPosition) {
-                    if (first) {
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Drop);
-                        SafeSleep.sleep_milliseconds(opmode, 600);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing);
-                        SafeSleep.sleep_milliseconds(opmode, 400);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2PickUp);
-                        SafeSleep.sleep_milliseconds(opmode, 400);
-
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Stone);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Init);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-                    } else {
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Drop);
-                        SafeSleep.sleep_milliseconds(opmode, 600);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing);
-                        SafeSleep.sleep_milliseconds(opmode, 400);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Init);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Init);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Retracted);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.clawServo2.setPosition(TeleopConstants.clawServo2PosOpen);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.clawServo1.setPosition(TeleopConstants.clawServo1PosOpen);
-                        SafeSleep.sleep_milliseconds(opmode, 600);
-
-                        hw.foundationLock.setPosition(TeleopConstants.foundationLockHalfUnlock);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.transferLock.setPosition(TeleopConstants.transferLockPosHalfUnlock);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-                    }
-                } else {
-                    if (first) {
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Drop_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 600);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2PickUp_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 400);
-
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Stone_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Init_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-                    } else {
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Drop_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 600);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Init_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Init_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Retracted_blue);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.clawServo2.setPosition(TeleopConstants.clawServo2PosOpen);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.clawServo1.setPosition(TeleopConstants.clawServo1PosOpen);
-                        SafeSleep.sleep_milliseconds(opmode, 600);
-
-                        hw.foundationLock.setPosition(TeleopConstants.foundationLockHalfUnlock);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-
-                        hw.transferLock.setPosition(TeleopConstants.transferLockPosHalfUnlock);
-                        SafeSleep.sleep_milliseconds(opmode, 200);
-                    }
-                }
+//                if (FieldPosition.RED_QUARY == fieldPosition) {
+//                    if (first) {
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Drop);
+//                        SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing);
+//                        SafeSleep.sleep_milliseconds(opmode, 400);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2PickUp);
+//                        SafeSleep.sleep_milliseconds(opmode, 400);
+//
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Stone);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Init);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//                    } else {
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Drop);
+//                        SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing);
+//                        SafeSleep.sleep_milliseconds(opmode, 400);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Init);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Init);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Retracted);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.clawServo2.setPosition(TeleopConstants.clawServo2PosOpen);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.clawServo1.setPosition(TeleopConstants.clawServo1PosOpen);
+//                        SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                        hw.foundationLock.setPosition(TeleopConstants.foundationLockHalfUnlock);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.transferLock.setPosition(TeleopConstants.transferLockPosHalfUnlock);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//                    }
+//                } else {
+//                    if (first) {
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Drop_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2PickUp_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 400);
+//
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Stone_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Init_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//                    } else {
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Drop_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Grabbing_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Open_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint2.setPosition(TeleopConstants.autoClaw2Init_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint3.setPosition(TeleopConstants.autoClaw3Init_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.redAutoClawJoint1.setPosition(TeleopConstants.autoClaw1Retracted_blue);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.clawServo2.setPosition(TeleopConstants.clawServo2PosOpen);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.clawServo1.setPosition(TeleopConstants.clawServo1PosOpen);
+//                        SafeSleep.sleep_milliseconds(opmode, 600);
+//
+//                        hw.foundationLock.setPosition(TeleopConstants.foundationLockHalfUnlock);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//
+//                        hw.transferLock.setPosition(TeleopConstants.transferLockPosHalfUnlock);
+//                        SafeSleep.sleep_milliseconds(opmode, 200);
+//                    }
+//                }
             }
         };
         t.start();
     }
 
     public static void intake(AllHardwareMap hw, double power) {
-        Thread thread = new Thread() {
-            public void run() {
-                hw.leftIntake.setPower(-power);
-                hw.rightIntake.setPower(power);
-            }
-        };
-        thread.start();
+//        Thread thread = new Thread() {
+//            public void run() {
+//                hw.leftIntake.setPower(-power);
+//                hw.rightIntake.setPower(power);
+//            }
+//        };
+//        thread.start();
     }
 
 
     public static void init(AllHardwareMap hw, com.qualcomm.robotcore.eventloop.opmode.LinearOpMode mode) {
-            LinearOpMode opmode =  mode;
-            Thread thread = new Thread() {
-                public void run() {
-                    hw.parkingServo.setPosition(TeleopConstants.parkingServoPosLock);
-                    SafeSleep.sleep_milliseconds(mode, 200);
-                    hw.foundationLock.setPosition(TeleopConstants.foundationLockInit);
-                    SafeSleep.sleep_milliseconds(mode, 200);
-                    hw.transferLock.setPosition(TeleopConstants.transferLockPosOut);
-                    SafeSleep.sleep_milliseconds(mode, 200);
-                    hw.liftOdometry.setPosition(TeleopConstants.liftOdometryDown);
-                    SafeSleep.sleep_milliseconds(mode, 200);
-                    hw.innerTransfer.setPosition(TeleopConstants.innerTransferPosClosed);
-                    SafeSleep.sleep_milliseconds(mode, 200);
-                }
-            };
-            thread.start();
-            SafeSleep.sleep_milliseconds(opmode, 50);
+//            LinearOpMode opmode =  mode;
+//            Thread thread = new Thread() {
+//                public void run() {
+//                    hw.parkingServo.setPosition(TeleopConstants.parkingServoPosLock);
+//                    SafeSleep.sleep_milliseconds(mode, 200);
+//                    hw.foundationLock.setPosition(TeleopConstants.foundationLockInit);
+//                    SafeSleep.sleep_milliseconds(mode, 200);
+//                    hw.transferLock.setPosition(TeleopConstants.transferLockPosOut);
+//                    SafeSleep.sleep_milliseconds(mode, 200);
+//                    hw.liftOdometry.setPosition(TeleopConstants.liftOdometryDown);
+//                    SafeSleep.sleep_milliseconds(mode, 200);
+//                    hw.innerTransfer.setPosition(TeleopConstants.innerTransferPosClosed);
+//                    SafeSleep.sleep_milliseconds(mode, 200);
+//                }
+//            };
+//            thread.start();
+//            SafeSleep.sleep_milliseconds(opmode, 50);
         }
     }
 

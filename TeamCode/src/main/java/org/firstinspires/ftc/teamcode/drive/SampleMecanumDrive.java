@@ -29,8 +29,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.teamcode.drive.virtual.DriveTrain;
 import org.firstinspires.ftc.teamcode.drive.virtual.VirtualMotorEx;
+import org.firstinspires.ftc.teamcode.util.AxesSigns;
+import org.firstinspires.ftc.teamcode.util.BNO055IMUUtil;
 import org.firstinspires.ftc.teamcode.util.DashboardUtil;
 import org.firstinspires.ftc.teamcode.util.LynxModuleUtil;
 import org.firstinspires.ftc.teamcode.util.RobotLogger;
@@ -123,14 +126,14 @@ public class SampleMecanumDrive extends MecanumDrive {
             parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;
             imu.initialize(parameters);
 
-            // TODO: if your hub is mounted vertically, remap the IMU axes so that the z-axis points
-            // upward (normal to the floor) using a command like the following:
-            // BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
+             // TODO: if your hub is mounted vertically, remap the IMU axes so that the z-axis points
+             // upward (normal to the floor) using a command like the following:
+//             BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
 
-            leftFront = hardwareMap.get(DcMotorEx.class, "leftFront");
-            leftRear = hardwareMap.get(DcMotorEx.class, "leftRear");
-            rightRear = hardwareMap.get(DcMotorEx.class, "rightRear");
-            rightFront = hardwareMap.get(DcMotorEx.class, "rightFront");
+            leftFront = hardwareMap.get(DcMotorEx.class, "frontLeft");
+            leftRear = hardwareMap.get(DcMotorEx.class, "backLeft");
+            rightRear = hardwareMap.get(DcMotorEx.class, "backRight");
+            rightFront = hardwareMap.get(DcMotorEx.class, "frontRight");
         } else {
             leftFront = new VirtualMotorEx("leftFront", this);
             leftRear = new VirtualMotorEx("leftRear", this);
